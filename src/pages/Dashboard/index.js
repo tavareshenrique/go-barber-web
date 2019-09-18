@@ -19,7 +19,7 @@ import { Container, Time } from './styles';
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 
 export default function Dashboard() {
-  const [schedulles, setSchedulles] = useState([]);
+  const [schedules, setSchedules] = useState([]);
   const [date, setDate] = useState(new Date());
 
   const dateFormatted = useMemo(
@@ -46,7 +46,7 @@ export default function Dashboard() {
         };
       });
 
-      setSchedulles(data);
+      setSchedules(data);
     }
 
     loadSchedule();
@@ -73,16 +73,16 @@ export default function Dashboard() {
       </header>
 
       <ul>
-        {schedulles.map(schedulle => (
+        {schedules.map(schedule => (
           <Time
-            key={schedulle.time}
-            past={schedulle.past}
-            available={!schedulle.appointment}
+            key={schedule.time}
+            past={schedule.past}
+            available={!schedule.appointment}
           >
-            <strong>{schedulle.time}</strong>
+            <strong>{schedule.time}</strong>
             <span>
-              {schedulle.appointment
-                ? schedulle.appointment.user.name
+              {schedule.appointment
+                ? schedule.appointment.user.name
                 : 'Em Aberto'}
             </span>
           </Time>
